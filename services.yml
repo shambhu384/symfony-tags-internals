@@ -1,0 +1,24 @@
+services:
+
+    tax_manager:
+        class: App\TaxManager
+
+    # define your tax implementations
+    tax_below_section:
+        class: App\LowCalculation
+        tags:
+            - tax_manager.add
+
+    hra_tax:
+        class: App\HRATaxCalculation
+        arguments:
+            - 95000
+        tags:
+            - tax_manager.add
+
+    tax_ppf:
+        class: App\TaxPPFDeduction
+        arguments:
+          - 7.0
+        tags:
+          - tax_manager.add

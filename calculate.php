@@ -1,16 +1,12 @@
 <?php
 
-
-use App\TaxManager;
-use App\LowCalculation;
-use App\HRATaxCalculation;
+use Container\Container;
 
 require 'vendor/autoload.php';
 
-$manager = new TaxManager();
+$container = Container::instance();
 
-$manager->add(new LowCalculation());
-$manager->add(new HRATaxCalculation());
+$manager = $container->get('tax_manager');
 
 try {
     $manager->apply($argv[1]);
