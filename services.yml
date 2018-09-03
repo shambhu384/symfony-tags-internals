@@ -6,6 +6,8 @@ services:
     # define your tax implementations
     tax_below_section:
         class: App\LowCalculation
+        arguments:
+            - 15000
         tags:
             - tax_manager.add
 
@@ -20,5 +22,6 @@ services:
         class: App\TaxPPFDeduction
         arguments:
           - 7.0
+          - 2000040
         tags:
           - tax_manager.add
